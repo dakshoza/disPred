@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 VERSION = '0.0.1'
-DESCRIPTION = 'An Integrated Real-Time Wheat and Tomato Disease Detection System'
+DESCRIPTION = 'A Tensorflow Lite Image Classification Model Integration Library'
 
 # Read the contents of your README file
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -9,7 +9,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 # Setting up
 setup(
-    name="disPred",
+    name="imBroker",
     version=VERSION,
     author="dakshoza (Daksh Oza)",
     author_email="<ozadaksh31@gmail.com>",
@@ -18,12 +18,10 @@ setup(
     long_description_content_type="text/markdown",
     packages=find_packages(),
     install_requires=['opencv-python==4.8.0.74', 'numpy==1.23.5', 'tensorflow==2.14.0'],
-    keywords=['crop detection', 'tensorflow lite', 'wheat', 'tomato', 'real time'],
+    keywords=['broker', 'tensorflow lite', 'image classification', 'flexible', 'real time'],
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
-        "Intended Audience :: Science/Research",
-        "Intended Audience :: Agriculture",
         "Topic :: Scientific/Engineering :: Artificial Intelligence",
         "Topic :: Scientific/Engineering :: Image Recognition",
         "Operating System :: OS Independent",

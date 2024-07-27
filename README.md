@@ -1,46 +1,51 @@
-# Crop Disease Detection Model
+# TFLite Image Classification Broker
 
-This repository contains an integrated real-time TensorFlow Lite model for detecting diseases in crop leaves, specifically for tomato and wheat plants.
+This library provides a simple interface for image classification using TensorFlow Lite models. It's designed to work with pre-trained models and can process both single images and directories of images.
 
-## Overview
+## Installation
 
-The `imageModel` class in this project provides functionality to:
-1. Predict diseases in crop leaves from an image
-2. Predict diseases in crop leaves from a directory of images
+```bash
+pip install imBroker
+```
 
-The model can detect the following conditions:
-- Tomato Leaf Early Blight
-- Healthy Tomato Leaf
-- Tomato Leaf Late Blight
-- Healthy Wheat Leaf
-- Wheat Leaf Septoria
-- Wheat Leaf Stripe Rust
+## Features
+
+- Single image classification
+- Batch classification for directories
+- Support for custom TFLite models
+- Handles any type of image shapes
 
 ## Usage
 
-### Initializing the Model
+### Initializing the Broker
 
 ```python
-model = imageModel()
+from imBroker import tflBroker
+
+# Define your TFlite model's path
+model_path = "path/to/your/model.tflite"
+
+# Define your output labels
+output_labels = {
+    0: 'Label 1',
+    1: 'Label 2',
+    ... 
+}
+
+# Initialize the broker
+broker = tflBroker(model_path, output_labels)
 ```
 
-This will load the TensorFlow Lite model from the file `cropDiseaseModel.tflite`.
-
-### Predicting Disease for a Single Image
+### Classifying a Single Image
 
 ```python
-result = model.predict_single_image("path/to/your/image.jpg")
+result = broker.predict_single_image("path/to/image.jpg")
 print(result)
 ```
 
-This will return a dictionary with the input path and the predicted disease.
-
-### Predicting Diseases for Multiple Images in a Directory
+### Classifying a Directory of Images
 
 ```python
-result = model.predict_image_directory("path/to/your/image/directory")
-print(result)
+results = broker.predict_image_directory("path/to/image/directory")
+print(results)
 ```
-
-This will return a dictionary with the input directory and predictions for all images in that directory.
-
